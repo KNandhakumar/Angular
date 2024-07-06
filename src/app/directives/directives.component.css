@@ -1,0 +1,19 @@
+/* <!-- Attribute  Directive NgClass --> */
+.primary{
+    color: red;
+}
+.secondary{
+    color: green;
+}
+.big{
+    font-size: 1.20rem;
+}
+.small{
+    font-size: 0.75rem;
+}
+.italics{
+    font-style:italic;
+}
+.bold{
+    font-weight: bold;
+}

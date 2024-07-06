@@ -1,0 +1,164 @@
+<div class="p-3 text-center">
+    <h1 class="text-heading-color text-3xl font-medium">Directive Concepts</h1>
+</div>
+
+<div class="flex flex-wrap justify-center mx-5">
+
+    <div class="container hidden md:block bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 mt-3">
+        <!-- Directives -->
+        <div class="pt-2">
+           <h2 class="text-emerald-600 text-lg md:text-xl">Component Directives
+            |
+      Structural Directives
+            |
+      Attribute Directives</h2>
+       </div>
+   </div>
+
+    <div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 mt-3">
+         <!-- Component Directive -->
+         <div class="pt-2">
+            <h2 class="text-heading-color text-lg md:text-xl"><span class="text-slate-400">Component Directive :</span>
+                A component directive in Angular defines a new HTML element with associated behavior, template, and styles. It encapsulates reusable logic for modularity and maintainability.</h2>
+        </div>
+    </div>
+
+    <div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 mt-4">
+        <!-- Structural Directive -->
+        <div class="pt-2">
+           <h2 class="text-heading-color text-lg md:text-xl"><span class="text-slate-400">Structural Directive : </span> A structural directive in Angular alters the DOM layout by adding, removing, or manipulating elements. Examples include *ngIf, *ngFor, and *ngSwitch.</h2>
+       </div>
+   </div>
+
+    <div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 mt-4">
+        <!-- Attribute  Directive -->
+        <div class="pt-2">
+           <h2 class="text-heading-color text-lg md:text-xl"><span class="text-slate-400">Attribute  Directive : </span>An attribute directive in Angular changes the appearance or behavior of an element. Examples include ngClass and ngStyle, which dynamically adjust classes and styles.</h2>
+       </div>
+   </div>
+
+   <!-- Main Concepts -->
+
+   <div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 mt-4">
+    <!-- Structural Directive *NgFor -->
+    <div class="pt-2">
+        <h1 class="text-emerald-600 text-lg md:text-xl">Structural Directive *NgFor</h1>
+       <h1 class="text-lg text-heading-color">{{title}} :</h1>
+       <ul>
+        <li *ngFor="let movie of movies" class="text-slate-600">{{movie}}</li>
+       </ul>
+   </div>
+</div>
+
+<div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 mt-4">
+    <!-- Structural Directive Array Object *NgFor -->
+    <div class="pt-2">
+        <h1 class="text-emerald-600 text-lg md:text-xl">Array Object with *NgFor</h1>
+        <h1 class="text-lg text-heading-color">{{title}} :</h1>
+        <div class="container overflow-x-auto rounded-lg drop-shadow-lg mt-2">
+            <table class="min-w-full bg-white border border-gray-300">
+                <thead>
+                    <tr class="bg-gray-200 text-left">
+                        <th class="py-2 px-4 border-b">S.no</th>
+                        <th class="py-2 px-4 border-b">Title</th>
+                        <th class="py-2 px-4 border-b">Director</th>
+                        <th class="py-2 px-4 border-b">Cast</th>
+                        <th class="py-2 px-4 border-b">Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let movie of movies1;let i = index" class="border-b">
+                        <td class="py-2 px-4">{{i+1}}</td>
+                        <td class="py-2 px-4">{{movie.title}}</td>
+                        <td class="py-2 px-4">{{movie.director}}</td>
+                        <td class="py-2 px-4">{{movie.cast}}</td>
+                        <td class="py-2 px-4">{{movie.year}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>    
+</div>
+
+<div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 mt-4">
+    <!-- Structural Directive *NgSwitch -->
+    <div class="pt-2">
+        <h1 class="text-emerald-600 text-lg md:text-xl">Structural Directive *NgSwitch</h1>
+        <input [(ngModel)]="num" type="text" class="outline-none rounded my-1 border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-1 px-2">
+        <!-- first using the twi way binding then use for ngSwitch property then *ngSwitchCase. input ssend the valur for switch property that property =  Structural same it  show the value one -->
+        <div [ngSwitch]="num">
+            <div *ngSwitchCase="'1'">One</div>
+            <div *ngSwitchCase="'2'">Two</div>
+            <div *ngSwitchCase="'3'">Three</div>
+            <div *ngSwitchCase="'4'">Four</div>
+        </div>
+    </div>    
+</div>
+
+<div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 mt-4">
+    <!-- Structural Directive *NgIf eg-1 -->
+    <div class="pt-2">
+       <h2 class="text-emerald-600 text-lg md:text-xl">Structural Directive *NgIf</h2>
+       <h1 *ngIf="true" class="mt-1">you can see me😎, beacuase now im true</h1>
+       <h1 *ngIf="true" class="mt-1">Can you see me?, beacuase now im false you dont see me😂🤣 (Check the code)</h1>
+       <h1 class="text-purple-600 text-md font-medium mt-1">The true is twisted so, this you can see it</h1>
+   </div>
+</div>
+
+<div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 mt-4">
+    <!-- Structural Directive *NgIf eg-2 -->
+    <div class="pt-2"> <!-- content showing or hiding more useful for ngIf -->
+       <h2 class="text-emerald-600 text-lg md:text-xl">Structural Directive *NgIf</h2>
+       <div class="flex items-center mt-2">
+        <input class="size-5 ml-2" type="checkbox" [(ngModel)]="showMe">
+        <h1 *ngIf="showMe" class="ml-2">Checkbox Clicked</h1>
+        <h1 *ngIf="!showMe" class="ml-2">Checkbox Unclicked</h1>
+        <h1 class="ml-3 text-red-500">{{showMe}}</h1>
+       </div>
+   </div>
+</div>
+
+<div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 mt-4">
+    <!-- Structural Directive ng-template -->
+    <div class="pt-2"> <!-- content showing or hiding more useful for ngIf -->
+       <h2 class="text-emerald-600 text-lg md:text-xl">ng-template</h2>
+       <div class="flex items-center mt-2">
+        <input class="size-5 ml-2" type="checkbox" [(ngModel)]="showMe1">
+        <div *ngIf="showMe1;then thenBlock; else elseBlock"> <!-- if Block. if this true show the then -->
+            <!-- this is condition div -->
+        </div>
+        <ng-template #thenBlock>
+            <h1 class="ml-2">Checkbox is Clicked</h1> <!-- Then Block -->
+        </ng-template>
+       </div>
+       <ng-template #elseBlock> <!-- else Block. if not true else block run-->
+        <h1 class="ml-2">Checkbox is Unclicked</h1>
+       </ng-template>
+   </div>
+</div>
+
+<div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 mt-4">
+    <!-- Attribute  Directive NgClass -->
+     <!-- this attribute use for condition can be used based on status -->
+    <div class="pt-2">
+       <h2 class="text-emerald-600 text-lg md:text-xl">Attribute  Directive ngClass</h2>
+       <!-- [ngClass]="['primary','big']" add this method changing the appereance and beheviour-->
+        <!-- [ngClass]="{'primary:true'} show the value. [ngClass]="{'primary:false'} hide the value" -->
+       <h1 [ngClass]="['primary','big']">Nandhu</h1>
+   </div>
+
+    <div class="pt-2">
+    <h2 class="text-emerald-600 text-lg md:text-xl">Attribute  Directive ngClass</h2>
+    <div class="flex gap-3 py-3">
+        <input class="size-6" type="checkbox" [(ngModel)]="enableRed">
+        <input class="size-6" type="checkbox" [(ngModel)]="enableBig">
+        <input class="size-6" type="checkbox" [(ngModel)]="enableItalic">
+        <input class="size-6" type="checkbox" [(ngModel)]="enableBold">
+    </div>
+            <h1 [ngClass]="{'primary':enableRed}">Nandhu <span class="text-purple-600">(Only color change)</span></h1>
+            <h1 [ngClass]="{'big':enableBig}">Nandhu <span class="text-purple-600">(Only size change)</span></h1>
+            <h1 [ngClass]="{'italics':enableItalic}">Nandhu <span class="text-purple-600">(Only font style change)</span></h1>
+            <h1 [ngClass]="{'primary':enableRed,'big':enableBig,'italics':enableItalic,'bold':enableBold}">Nandhu <span class="text-purple-600">(all  are changing)</span></h1>
+        </div>
+    </div>
+</div>
