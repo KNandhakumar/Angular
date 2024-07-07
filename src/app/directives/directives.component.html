@@ -31,9 +31,9 @@
    </div>
 
     <div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 mt-4">
-        <!-- Attribute  Directive -->
+        <!-- Attribute Directive -->
         <div class="pt-2">
-           <h2 class="text-heading-color text-lg md:text-xl"><span class="text-slate-400">Attribute  Directive : </span>An attribute directive in Angular changes the appearance or behavior of an element. Examples include ngClass and ngStyle, which dynamically adjust classes and styles.</h2>
+           <h2 class="text-heading-color text-lg md:text-xl"><span class="text-slate-400">Attribute Directive : </span>An attribute directive in Angular changes the appearance or behavior of an element. Examples include ngClass and ngStyle, which dynamically adjust classes and styles.</h2>
        </div>
    </div>
 
@@ -161,4 +161,59 @@
             <h1 [ngClass]="{'primary':enableRed,'big':enableBig,'italics':enableItalic,'bold':enableBold}">Nandhu <span class="text-purple-600">(all  are changing)</span></h1>
         </div>
     </div>
+
+    <div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 mt-4">
+        <!-- Attribute Directive NgStyle -->
+        <div class="pt-2">
+           <h2 class="text-emerald-600 text-lg md:text-xl">Attribute Directive NgStyle</h2>
+            <!-- using ternory operator(?) if true show apply red false apply blue -->
+           <h1 class="text-2xl" [ngStyle]="{'color':status=='itachi'?'red':'blue'}">Itachi uchiha</h1>
+       </div>
+
+       <!-- Note : can only be used to change a specific item uses for this ngStyle property -->
+       <div class="pt-2">
+        <h2 class="text-emerald-600 text-lg md:text-xl">Attribute Directive NgStyle</h2>
+        <input [(ngModel)]="color" class="mt-2 outline-none rounded my-1 border drop-shadow-sm focus:border-emerald-700 py-1 px-2" type="text">
+        <h1 class="text-lg md:text-2xl" [ngStyle]="{'color':color}">Enter Your Favorite Color I'll change my color😊</h1>
+    </div>
+   </div>
+
+   <div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 my-4">
+    <!-- Pipes -->
+    <div class="pt-2">
+        <h2 class="text-emerald-600 text-lg md:text-xl">Pipe Concepts</h2>
+        <h2 class="text-heading-color text-lg md:text-xl">Date Pipe</h2>
+        <div class="mt-2">
+          <h1><span class="text-red-500">Without using pipe: </span>{{toDate}}</h1>
+          <h1><span class="text-red-500">Using date pipe: </span>{{toDate | date}}</h1>
+          <h1><span class="text-red-500">Using short date pipe: </span>{{toDate | date:'short'}}</h1>
+          <h1><span class="text-red-500">Using medium date pipe: </span>{{toDate | date:'medium'}}</h1>
+          <h1><span class="text-red-500">Using full date pipe: </span>{{toDate | date:'fullDate'}}</h1>
+          <h1><span class="text-red-500">Using long date pipe: </span>{{toDate | date:'longDate'}}</h1>
+        </div>
+      </div>
+      <!-- Upper and Lowercase Pipe -->
+      <div class="pt-2">
+        <h2 class="text-heading-color text-lg md:text-xl">Upper and Lowercase Pipe</h2>
+        <h1><span class="text-red-500">Original Text</span> : {{message}}</h1>
+        <h1><span class="text-red-500">Uppercase</span> : {{message|uppercase}}</h1>
+        <h1><span class="text-red-500">Lowercase</span> : {{message|lowercase}}</h1>
+      </div>
+      <!-- Slice Pipe -->
+      <div class="pt-2">
+        <h2 class="text-heading-color text-lg md:text-xl">Slice Pipe</h2>
+        <h1><span class="text-red-500 text-lg">Original Text</span> : {{fruit}}</h1>
+        <h1><span class="text-red-500 text-lg">Slice-1</span> : {{fruit|slice:7:15}}</h1>
+        <h1><span class="text-red-500 text-lg">Slice-2</span> : {{fruit|slice:-6}}</h1>
+        <h1><span class="text-red-500 text-lg">Slice-3</span> : {{fruit|slice:0:2}}</h1>
+      </div>
+      <!-- Currency Pipe -->
+      <div class="pt-2">
+        <h2 class="text-heading-color text-lg md:text-xl">Currency Pipe</h2>
+        <h1><span class="text-red-500">Original price</span> : {{price}}</h1>
+        <h1><span class="text-red-500">using currency pipe</span> : {{price|currency}}</h1>
+        <h1><span class="text-red-500">using INR Pipe</span> : {{price|currency:'INR'}}</h1>
+        <!-- <h1><span class="text-red-500 text-lg">Slice-3</span> : {{price|}}</h1> -->
+      </div>
+</div>
 </div>

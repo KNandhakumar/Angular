@@ -35,4 +35,19 @@ export class DirectivesComponent {
   enableBig = false;
   enableItalic = false;
   enableBold = false;
+
+  status = 'itachi'; // Attribute Directive NgStyle
+  color = 'red'; // Attribute Directive NgStyle
+
+  // Date pipe
+  toDate = new Date();
+
+  // Uppercase Lowercase pipe
+  message = 'Nandhakumar';
+
+  // Slice pipe
+  fruit = 'My Fav Papaya';
+
+  // Currency pipe
+  price = 100;
 }
