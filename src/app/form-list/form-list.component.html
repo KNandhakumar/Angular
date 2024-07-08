@@ -1,0 +1,13 @@
+<h2 class="text-heading-color text-lg md:text-xl">List Component</h2>
+<div *ngIf="cars.length>0;then carList; else noData">
+    <!-- Conditional rendering -->
+</div>
+<ng-template #carList>
+    <ul>
+        <li class="text-red-500" *ngFor="let carName of cars">{{carName}}</li>
+    </ul>
+</ng-template>
+
+<ng-template #noData>
+    <h1>No data Available</h1>
+</ng-template>

@@ -1,0 +1,177 @@
+<div class="p-3 text-center">
+    <h1 class="text-heading-color text-3xl font-medium">LifeCycle Hooks</h1>
+</div>
+<!-- Angular LifeCycle Hooks -->
+<div class="flex flex-wrap justify-center mx-5">
+    <div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 mt-4">
+        <h2 class="text-heading-color text-lg md:text-xl">Angular Hooks</h2>
+        <ul class="space-y-2 text-emerald-600 mt-1">
+            <li><span class="text-purple-600 mr-1">⦿</span>ngOnChanges</li>
+            <li><span class="text-purple-600 mr-1">⦿</span>ngOnInit</li>
+            <li><span class="text-purple-600 mr-1">⦿</span>ngDoCheck</li>
+            <li><span class="text-purple-600 mr-1">⦿</span>ngAfterContentInit</li>
+            <li><span class="text-purple-600 mr-1">⦿</span>ngAfterContentChecked</li>
+            <li><span class="text-purple-600 mr-1">⦿</span>ngAfterViewInit</li>
+            <li><span class="text-purple-600 mr-1">⦿</span>ngAfterViewChecked</li>
+            <li><span class="text-purple-600 mr-1">⦿</span>ngOnDestroy</li>
+        </ul>
+    </div>
+</div>
+
+<!-- NgOnChanges Hook Example -->
+<div class="flex flex-wrap justify-center mx-5">
+    <div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 mt-4">
+        <!-- Step 1 -->
+        <div class="my-2">
+            <h2 class="text-heading-color text-lg md:text-xl">NgOnChanges</h2>
+            <div class="text-slate-700">
+                <p><strong>Purpose:</strong> ngOnChanges is designed to handle changes to the component's input properties.</p>
+                <p><strong>Parent to Child Data Transfer:</strong> It is used when data is passed from a parent component to a child component using the &#64;Input decorator.</p>
+            </div>
+        </div>
+        <!-- Step 2 -->
+        <div class="my-2">
+            <h1 class="text-red-400 text-lg md:text-xl">Child Component Setup:</h1>
+            <div class="text-slate-700">
+                <p><strong>Define Method:</strong> Implement the ngOnChanges method in the child component to respond to changes in input properties.</p>
+                <p><strong>Import Required Modules:</strong> Import OnChanges and SimpleChanges from Angular core in the child component.</p>
+                <p><strong>Class Implementation:</strong> Add OnChanges to the class declaration after OnInit.</p>
+                <p><strong>Note:</strong> It's only working for strings, not for arrays and objects.</p>
+            </div>
+        </div>
+        <!-- Step 3 -->
+        <div class="my-2">
+            <h1 class="text-red-400 text-lg md:text-xl">Example Simplified:</h1>
+            <div class="text-slate-700">
+                <p><strong>Define Input Properties:</strong> Use the &#64;Input decorator in the child component to receive data from the parent.</p>
+                <p><strong>Implement ngOnChanges:</strong> Create the ngOnChanges method in the child component to handle changes in the input properties.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- NgOnInit Hook Example -->
+<div class="flex flex-wrap justify-center mx-5">
+    <div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 mt-4">
+        <!-- Step 1 -->
+        <div class="my-2">
+          <h2 class="text-heading-color text-lg md:text-xl">NgOnInit</h2>
+          <div class="text-slate-700">
+            <p><strong>Purpose:</strong> ngOnInit is designed to perform component initialization logic.</p>
+            <p><strong>Timing:</strong> It runs after Angular first displays the data-bound properties.</p>
+          </div>
+        </div>
+        <!-- Step 2 -->
+        <div class="my-2">
+          <h1 class="text-red-400 text-lg">Setup in Child Component:</h1>
+          <div class="text-slate-700">
+            <p><strong>Import OnInit:</strong> Import <code>OnInit</code> from Angular core in the child component.</p>
+            <p><strong>Add OnInit to Class:</strong> Add <code>OnInit</code> to the class declaration after <code>&#64;Component</code>.</p>
+            <p><strong>Implement ngOnInit Method:</strong> Define the <code>ngOnInit</code> method in the class.</p>
+          </div>
+        </div>
+        <!-- Step 3 -->
+        <div class="my-2">
+          <h1 class="text-red-400 text-lg">Call Sequence and Usage:</h1>
+          <div class="text-slate-700">
+            <p><strong>Call Sequence:</strong> ngOnInit is called once after the first <code>ngOnChanges</code>.</p>
+            <p><strong>Usage:</strong> Suitable for initializing data or fetching data from a service.</p>
+          </div>
+        </div>
+      </div>
+</div>
+  
+<!-- Hook Component NgOnChanges -->
+<div class="flex flex-wrap justify-center mx-5">
+    <div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 mt-4">
+        <h2 class="text-heading-color text-lg md:text-xl">Hook Component NgOnChanges</h2>
+        <span class="text-[20px]">Title :  <input [(ngModel)]="title" class="text-base outline-none rounded my-1 border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-1 px-2" type="text"></span>
+        <!-- hooks-child component for NgOnChanges -->
+         <app-hooks-child [titleGet]="title"></app-hooks-child>
+    </div>
+</div>
+
+<!-- NgDoCheck Hook Example -->
+<div class="flex flex-wrap justify-center mx-5">
+    <div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 mt-4">
+        <!-- Step 1 -->
+        <div class="my-2">
+          <h2 class="text-heading-color text-lg md:text-xl">NgDoCheck</h2>
+          <div class="text-slate-700">
+            <p><strong>Purpose:</strong> ngDoCheck is a lifecycle hook in Angular for implementing custom change detection.</p>
+            <p><strong>Custom Change Detection:</strong> It allows you to perform custom logic to detect and respond to changes in component state that Angular's default change detection might miss.</p>
+          </div>
+        </div>
+        <!-- Step 2 -->
+        <div class="my-2">
+          <h1 class="text-red-400 text-lg">Setup in Child Component:</h1>
+          <div class="text-slate-700">
+            <p><strong>Import DoCheck:</strong> Import <code>DoCheck</code> from Angular core in the child component.</p>
+            <p><strong>Add DoCheck to Class:</strong> Add <code>DoCheck</code> to the class declaration after <code>&#64;Component</code>.</p>
+            <p><strong>Implement ngDoCheck Method:</strong> Define the <code>ngDoCheck</code> method in the class to implement your custom change detection logic.</p>
+          </div>
+        </div>
+        <!-- Step 3 -->
+        <div class="my-2">
+          <h1 class="text-red-400 text-lg">Call Sequence and Usage:</h1>
+          <div class="text-slate-700">
+            <p><strong>Call Sequence:</strong> ngDoCheck is called during every change detection cycle.</p>
+            <p><strong>Usage:</strong>ngOnChanges is only for get changes of strings but ngDoCheck is for all to check the changes.</p>
+          </div>
+        </div>
+      </div>
+</div>
+
+<!-- Hook Component NgDoCheck -->
+<div class="flex flex-wrap justify-center mx-5">
+    <div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 mt-4">
+        <h2 class="text-heading-color text-lg md:text-xl">Hook Component NgDoCheck</h2>
+        <span class="text-[20px]">Title :  <input [(ngModel)]="title1" class="text-base outline-none rounded my-1 border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-1 px-2" type="text"></span>
+        <button (click)="addTitles()" class="bg-emerald-600 px-2 py-1 ml-3 rounded mt-2 text-white  hover:bg-white hover:text-emerald-600 transition-all duration-500">Submit</button>
+        <!-- hooks-child component for NgDoCheck -->
+         <app-hooks-child-1 [titleGet2]="titles"></app-hooks-child-1>
+    </div>
+</div>
+
+<!-- NgOnDestroy -->
+<div class="flex flex-wrap justify-center mx-5">
+  <div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 mt-4">
+    <!-- Step 1 -->
+    <div class="my-2">
+      <h2 class="text-heading-color text-lg md:text-xl">NgOnDestroy</h2>
+      <div class="text-slate-700">
+        <p><strong>Purpose:</strong> Perform cleanup logic before the component is destroyed.</p>
+        <p><strong>Timing:</strong> Runs just before Angular destroys the component.</p>
+      </div>
+    </div>
+    <!-- Step 2 -->
+    <div class="my-2">
+      <h1 class="text-red-400 text-lg">Setup in Child Component:</h1>
+      <div class="text-slate-700">
+        <p><strong>Import OnDestroy:</strong> Import <code>OnDestroy</code> from Angular core.</p>
+        <p><strong>Add to Class:</strong> Add <code>OnDestroy</code> to the class declaration.</p>
+        <p><strong>Implement Method:</strong> Define the <code>ngOnDestroy</code> method.</p>
+      </div>
+    </div>
+    <!-- Step 3 -->
+    <div class="my-2">
+      <h1 class="text-red-400 text-lg">Call Sequence and Usage:</h1>
+      <div class="text-slate-700">
+        <p><strong>Call Sequence:</strong> Called once before the component is removed from the DOM.</p>
+        <p><strong>Usage:</strong>It is used to destroy the component (Which mean hide the entire component)</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NgOnDestroy -->
+<div class="flex flex-wrap justify-center mx-5 mb-5">
+  <div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 mt-4">
+    <h2 class="text-heading-color text-lg md:text-xl">NgOnDestroy</h2>
+    <div class="flex items-center mt-2">
+      <span>Disable heading:</span>
+      <input [(ngModel)]="disableHeading" class="ml-2 size-5" type="checkbox">
+    </div>
+    <app-hooks-child-1 *ngIf="!disableHeading"></app-hooks-child-1>
+  </div>  
+</div>

@@ -1,0 +1,108 @@
+<div class="p-3 text-center">
+    <h1 class="text-heading-color text-3xl font-medium">Angular Basics</h1>
+</div>
+
+<div class="flex flex-wrap justify-center mx-5">
+    <!-- Angular Basics -->
+    <div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 mt-3">
+        <!-- One-way Data Binding -->
+        <div class="pt-2">
+            <h2 class="text-heading-color text-lg md:text-xl">One-way Data Binding</h2>
+            <h1>{{ firstName }} {{ lastName }}</h1>
+        </div>
+
+        <!-- Property Binding -->
+        <div class="pt-2">
+            <h2 class="text-heading-color text-lg md:text-xl">Property Binding</h2>
+            <h1 [innerText]="title"></h1>
+        </div>
+
+        <!-- Two-way Data Binding -->
+        <div class="pt-2">
+            <h2 class="text-heading-color text-lg md:text-xl">Two-way Data Binding</h2>
+            <input class="outline-none rounded my-1 border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-1 px-2" [(ngModel)]="name" type="text">
+            <h1 class="px-2">{{ name }}</h1>
+        </div>
+
+        <!-- String Interpolation -->
+        <div class="pt-2">
+            <h2 class="text-heading-color text-lg md:text-xl">String Interpolation</h2>
+            <h1>{{ learn }}</h1>
+        </div>
+
+        <!-- Expression Interpolation -->
+        <div class="pt-2">
+            <h2 class="text-heading-color text-lg md:text-xl">Expression Interpolation</h2>
+            <h1>{{ 'Hi ' + 'Friends ' + 'How ' + 'Are You' }}</h1>
+        </div>
+
+        <!-- Function Interpolation -->
+        <div class="pt-2">
+            <h2 class="text-heading-color text-lg md:text-xl">Function Interpolation</h2>
+            <h1>{{ getLearn() }}</h1>
+        </div>
+
+        <!-- Function with Parameters Interpolation -->
+        <div class="pt-2">
+            <h2 class="text-heading-color text-lg md:text-xl">Function with Parameters Interpolation</h2>
+            <h1>Largest number: {{ getMax(100, 200) }}</h1>
+        </div>
+
+        <!-- Arithmetic Expression Interpolation -->
+        <div class="pt-2">
+            <h2 class="text-heading-color text-lg md:text-xl">Arithmetic Expression Interpolation</h2>
+            <h1>100 x 10 = {{ 100 * 10 }}</h1>
+        </div>
+
+        <!-- Style Property Interpolation -->
+        <div class="pt-2">
+            <h2 class="text-heading-color text-lg md:text-xl">Style Property Interpolation</h2>
+            <h1 [style.color]="color">This text color changes dynamically</h1>
+        </div>
+    </div>
+
+     
+     <div class="bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 my-5">
+        <!-- Property Binding Section -->
+        <div class="pt-2">
+            <h2 class="text-heading-color text-lg md:text-xl">Property Binding Section</h2>
+            <h1 [innerText]="propertyBinding"></h1>
+        </div>
+
+        <!-- Property Binding for button -->
+        <div class="pt-2">
+            <h2 class="text-heading-color text-lg md:text-xl">Property Binding for button</h2>
+            <button class="bg-emerald-600 p-2 rounded mt-2 text-white" [disabled]="isDisabled">Not clickable🤣</button>
+        </div>
+
+        <!-- More Property Binding -->
+        <div class="pt-2">
+            <h2 class="text-heading-color text-lg md:text-xl">More Property Binding</h2>
+            <p>
+                if you want to know more property bindings just google it by (dom element properties)😎 
+            </p>
+        </div>
+     </div>
+
+     <div class="bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 mb-5">
+        <!-- Event Binding -->
+        <div class="pt-2">
+            <h2 class="text-heading-color text-lg md:text-xl">Event Binding (Click Event With Expression)</h2>
+            <div class="flex items-center">
+                <button (click)="clickMe(); Clickcount1=Clickcount" class="bg-emerald-600 p-2 rounded mt-2 text-white hover:bg-white hover:text-emerald-600">Click me!</button>
+                <h1 class="ml-3">You have clicked : {{Clickcount}}</h1>
+                <h1 class="ml-3">Copy of click count : {{Clickcount1}}</h1>
+            </div>
+        </div>
+
+        <!-- Input Event handling -->
+        <div class="pt-2"> <!--first input function pass parameter for ($event) then you take that parameter in you function
+             then access this value like Type assertion like this - (event.target as HTMLInputElement).value. target means your targeted input , then input is the Html input elemnt so this type assertion is good practice -->
+            <h2 class="text-heading-color text-lg md:text-xl">Input Event handling</h2>
+            <input type="text" (input)="handleInput($event); value1 = $any($event.target).value" class="outline-none rounded my-1 border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-1 px-2 placeholder:text-emerald-600"  placeholder="Type something">
+            <h1 class=" mt-1">With Input : <span class="text-emerald-600">{{value}}</span></h1>
+            <h1 class=" mt-1 mb-2">Without Input : <span class="text-emerald-600">{{value1}}</span></h1>
+            <h1>Learn more events from search by google in (Dom Events)</h1>
+        </div>
+     </div>
+</div>
