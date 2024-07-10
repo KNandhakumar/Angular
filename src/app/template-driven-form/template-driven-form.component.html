@@ -5,24 +5,55 @@
 <!-- Template driven form -->
 <div class="flex flex-wrap justify-center mx-5">
     <div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 my-3">
-      <h2 class="text-heading-color text-lg md:text-2xl my-2">Template Driven Forms only input</h2>
+      <h2 class="text-heading-color text-lg md:text-2xl my-2">Template Driven Forms only input with validations</h2>
         <form action="" #contactForm="ngForm" (submit)="onSubmit(contactForm)">
           <!-- First Name -->
           <div class="mb-4">
             <label class="block text-heading-color mb-1" for="firstname">First Name :</label>
-            <input ngModel name="firstname" id="firstname" class="w-full outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="text">
+            <input required minlength="6" maxlength="15" pattern="^[a-zA-Z]+$" ngModel name="firstname" #firstname="ngModel" id="firstname" class="w-full outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="text">
+            <!-- *ngIf="!firstname.valid && (firstname.touched || firstname.dirty)" this is syntax for 2 or 3 validation conditions -->
+            <span *ngIf="!firstname.valid && (firstname.touched || firstname.dirty)">
+              <span class="text-red-400" *ngIf="firstname.errors?.['minlength']">
+                Minimum length is 6 Character
+              </span>
+              <span class="text-red-400" *ngIf="firstname.errors?.['required']">
+                First name is required
+              </span>
+              <span class="text-red-400" *ngIf="firstname.errors?.['maxlength']">
+                Maximum 15 Characters only
+              </span>
+              <span class="text-red-400" *ngIf="firstname.errors?.['pattern']">
+                Only Characters allowed
+              </span>
+            </span>
           </div>
           
           <!-- Last Name -->
           <div class="mb-4">
             <label class="block text-heading-color mb-1" for="lastname">Last Name :</label>
-            <input ngModel name="lastname" id="lastname" class="w-full outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="text">
+            <input required minlength="4" maxlength="15" ngModel name="lastname" #lastname="ngModel" id="lastname" class="w-full outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="text">
+            <span class="text-red-400" *ngIf="!lastname.valid && (lastname.touched || lastname.dirty)">
+              <span *ngIf="lastname.errors?.['required']">
+                last name is required
+              </span>
+              <span *ngIf="lastname.errors?.['minlength']">
+                Minimum length is 4 Character
+              </span>
+              <span *ngIf="lastname.errors?.['maxlength']">
+                Maximum 15 characters only
+              </span>
+            </span>
           </div>
       
           <!-- Email -->
           <div class="mb-4">
             <label class="block text-heading-color mb-1" for="email">Email :</label>
-            <input ngModel name="email" id="email" class="w-full outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="email">
+            <input required #email="ngModel" ngModel name="email" id="email" class="w-full outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="email">
+            <span class="text-red-400" *ngIf="!email.valid && (email.touched || email.dirty)">
+              <span *ngIf="email.errors?.['required']">
+                email is required
+              </span>
+            </span>
           </div>
       
           <!-- Gender -->
@@ -31,11 +62,11 @@
                 <label class="block mr-1 text-heading-color mb-1 text-lg">Gender :</label>
             <div class="flex items-center">
               <label class="mr-3 flex items-center">
-                <input type="radio" value="male" id="gender" ngModel name="gender" class="size-5 mr-1">
+                <input required type="radio" value="male" id="gender" ngModel name="gender" class="size-5 mr-1">
                 <span>Male</span>
               </label>
               <label class="mr-3 flex items-center">
-                <input type="radio" value="female" id="gender" ngModel name="gender" class="size-5 mr-1">
+                <input required="" type="radio" value="female" id="gender" ngModel name="gender" class="size-5 mr-1">
                 <span>Female</span>
               </label>
             </div>
@@ -45,17 +76,27 @@
           <!-- Married -->
           <div class="mb-4 flex items-center">
             <label class="text-heading-color mr-3 text-lg" for="isMarried">Married :</label>
-            <input type="checkbox" id="isMarried" ngModel name="isMarried" class="size-5 rounded border-emerald-700 text-emerald-600 focus:ring-emerald-500">
+            <input type="checkbox" required #married="ngModel" id="isMarried" ngModel name="isMarried" class="size-5 rounded border-emerald-700 text-emerald-600 focus:ring-emerald-500">
+            <span class="text-red-400" *ngIf="!married.valid && (married.touched || married.dirty)">
+              <span *ngIf="married.errors?.['required']">
+                married status is required
+              </span>
+            </span>
           </div>
       
           <!-- Country -->
           <div class="mb-4">
            <div class="flex">
             <label class="block text-heading-color mb-1 mr-2" for="country">Country :</label>
-            <select name="country" id="country" ngModel class=" outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3">
+            <select required #country="ngModel" name="country" id="country" ngModel class=" outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3">
               <option value="">Select</option>
               <option [ngValue]="country.id" *ngFor="let country of countryList">{{country.name}}</option>
             </select>
+            <span class="text-red-400" *ngIf="!country.valid && (country.touched || country.dirty)">
+              <span *ngIf="country.errors?.['required']">
+                country is required
+              </span>
+            </span>
            </div> 
           </div>
 
@@ -64,26 +105,43 @@
             <!-- City -->
             <div class="mb-4 flex items-center">
             <label class="text-heading-color mr-3 text-lg" for="city">City :</label>
-            <input ngModel name="city" id="city" class="w-1/2 outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="text">
+            <input required #city="ngModel" ngModel name="city" id="city" class="w-1/2 outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="text">
+            <span class="text-red-400" *ngIf="!city.valid && (city.touched || city.dirty)">
+              <span *ngIf="city.errors?.['required']">
+                city is required
+              </span>
+            </span>
               </div>
 
               <!-- Street -->
               <div class="mb-4 flex items-center">
               <label class="text-heading-color mr-3 text-lg" for="street">Street :</label>
-            <input ngModel name="street" id="street" class="w-1/2 outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="text">
+            <input required #street="ngModel" ngModel name="street" id="street" class="w-1/2 outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="text">
+            <span class="text-red-400" *ngIf="!street.valid && (street.touched || street.dirty)">
+              <span *ngIf="street.errors?.['required']">
+                street is required
+              </span>
+            </span>
               </div>
 
               <!-- Pincode -->
               <div class="mb-4 flex items-center">
                 <label class="text-heading-color mr-3 text-lg" for="pincode">Pin Code :</label>
-                <input ngModel name="pincode" id="pincode" class="w-1/2 outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="text">
+                <input required #pincode="ngModel" ngModel name="pincode" id="pincode" class="w-1/2 outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="text">
+                <span class="text-red-400" *ngIf="!pincode.valid && (pincode.touched || pincode.dirty)">
+                  <span *ngIf="pincode.errors?.['required']">
+                    pincode is required
+                  </span>
+                </span>
               </div>
            </div>
 
             <!-- Submit Button -->
           <div class="text-center">
-            <button type="submit" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all duration-300">Submit</button>
+            <button type="submit" [disabled]="!contactForm.valid" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all duration-300">Submit</button>
           </div>
         </form>
       </div>
 </div>
+
+<app-template-driven-form-1></app-template-driven-form-1>

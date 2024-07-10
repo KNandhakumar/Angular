@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormsModule, NgControl, NgForm } from '@angular/forms';
+import { TemplateDrivenForm1Component } from "../template-driven-form-1/template-driven-form-1.component";
 
 @Component({
   selector: 'app-template-driven-form',
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule, FormsModule, TemplateDrivenForm1Component],
   templateUrl: './template-driven-form.component.html',
   styleUrl: './template-driven-form.component.css'
 })
@@ -18,6 +19,7 @@ export class TemplateDrivenFormComponent {
     new Country('4','russia'),
   ];
   
+  // Form Values for template driven form
   onSubmit(form:NgForm){
     console.log(form.value)
   }
