@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ReactiveForm1Component } from "../reactive-form-1/reactive-form-1.component";
 @Component({
   selector: 'app-reactive-form',
@@ -20,18 +20,53 @@ export class ReactiveFormComponent {
 
   // formGroup for reactive form
     contactForm = new FormGroup({
-      firstName: new FormControl(),
-      lastName: new FormControl(),
-      email: new FormControl(),
-      gender: new FormControl(),
-      isMarried: new FormControl(),
-      country: new FormControl(),
+      firstName: new FormControl('',[Validators.required, Validators.minLength(5), Validators.maxLength(15)]),
+      lastName: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      email: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$')]),
+      gender: new FormControl('', Validators.required),
+      isMarried: new FormControl('', Validators.requiredTrue),
+      country: new FormControl('', Validators.required),
       address: new FormGroup({
-        city: new FormControl(),
-        street: new FormControl(),
-        pincode: new FormControl(),
+        city: new FormControl('', Validators.required),
+        street: new FormControl('', Validators.required),
+        pincode: new FormControl('', Validators.required),
       })
     })
+
+    // reactive form form controls name get method
+    // formcontrol for firstName
+    get firstname(){
+      return this.contactForm.get('firstName');
+    }
+    // formcontrol for lastName
+    get lastname(){
+      return this.contactForm.get('lastName');
+    }
+    // formcontrol for email
+    get email(){
+      return this.contactForm.get('email');
+    }
+    // formcontrol for isMarried
+    get ismarried(){
+      return this.contactForm.get('isMarried')
+    }
+    // formcontrol for country
+    get country(){
+      return this.contactForm.get('country')
+    }
+    // formcontrol for city
+    get city(){
+      return this.contactForm.get('address')?.get('city')
+    }
+    // formcontrol for street
+    // another form group to get this type 
+    get street(){
+      return this.contactForm.get('address')?.get('street')
+    }
+    // formcontrol for pincode
+    get pincode(){
+      return this.contactForm.get('address')?.get('pincode')
+    }
     
     onSubmit(){
       console.log(this.contactForm.value)

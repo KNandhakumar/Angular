@@ -11,18 +11,39 @@
           <div class="mb-4">
             <label class="block text-heading-color mb-1" for="firstname">First Name :</label>
             <input formControlName="firstName" name="firstname" id="firstname" class="w-full outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="text">
+            <!-- if condition for valid checking in form -->
+            <span class="text-red-400" *ngIf="!firstname?.valid && (firstname?.touched || firstname?.dirty)">
+            <!-- Multiple error checking in form -->
+              <span *ngIf="!firstname?.valid && (firstname?.errors?.['required'])">
+                first name is required
+              </span>
+              <span *ngIf="!firstname?.valid && (firstname?.errors?.['minlength'])">
+                Minimum length 5 characters
+              </span>
+              <span *ngIf="!firstname?.valid && (firstname?.errors?.['maxlength'])">
+                Maximum 15 characters only
+              </span>
+            </span>
           </div>
           
           <!-- Last Name -->
           <div class="mb-4">
             <label class="block text-heading-color mb-1" for="lastname">Last Name :</label>
             <input formControlName="lastName" name="lastname" id="lastname" class="w-full outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="text">
+            <span class="text-red-400" *ngIf="!lastname?.valid && (lastname?.touched || lastname?.dirty)">
+              <span *ngIf="!lastname?.valid && lastname?.errors?.['required']">last name is required</span>
+              <span *ngIf="!lastname?.valid && lastname?.errors?.['minlength']">Minimum length 5 characters</span>
+            </span>
           </div>
       
           <!-- Email -->
           <div class="mb-4">
             <label class="block text-heading-color mb-1" for="email">Email :</label>
             <input formControlName="email" name="email" id="email" class="w-full outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="email">
+            <span class="text-red-400" *ngIf="!email?.valid && (email?.touched || email?.dirty)">
+              <span *ngIf="!email?.valid && email?.errors?.['required']">email is required</span>
+              <span *ngIf="!email?.valid && email?.errors?.['pattern']">invalid email</span>
+            </span>
           </div>
       
           <!-- Gender -->
@@ -46,6 +67,9 @@
           <div class="mb-4 flex items-center">
             <label class="text-heading-color mr-3 text-lg" for="isMarried">Married :</label>
             <input type="checkbox" id="isMarried" formControlName="isMarried" name="isMarried" class="size-5 rounded border-emerald-700 text-emerald-600 focus:ring-emerald-500">
+            <span class="text-red-400" *ngIf="!ismarried?.valid && (ismarried?.touched || ismarried?.dirty)">
+              <span *ngIf="!ismarried?.valid && ismarried?.errors?.['required']">married status is required</span>
+            </span>
           </div>
       
           <!-- Country -->
@@ -56,6 +80,9 @@
               <option value="">Select</option>
               <option [ngValue]="country.id" *ngFor="let country of countryList">{{country.name}}</option>
             </select>
+            <span class="text-red-400" *ngIf="!country?.valid && (country?.touched || city?.dirty)">
+              <span *ngIf="!country?.valid && country?.errors?.['required']">country is required</span>
+            </span>
            </div> 
           </div>
 
@@ -65,24 +92,33 @@
             <div class="mb-4 flex items-center">
             <label class="text-heading-color mr-3 text-lg" for="city">City :</label>
             <input formControlName="city" name="city" id="city" class="w-1/2 outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="text">
+            <span class="text-red-400" *ngIf="!city?.valid && (city?.touched || city?.dirty)">
+              <span *ngIf="!city?.valid && city?.errors?.['required']">city is required</span>
+            </span>
               </div>
 
               <!-- Street -->
               <div class="mb-4 flex items-center">
               <label class="text-heading-color mr-3 text-lg" for="street">Street :</label>
             <input formControlName="street" name="street" id="street" class="w-1/2 outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="text">
+            <span class="text-red-400" *ngIf="!street?.valid && (street?.touched || street?.dirty)">
+              <span *ngIf="!street?.valid && street?.errors?.['required']">street required</span>
+            </span>
               </div>
 
               <!-- Pincode -->
               <div class="mb-4 flex items-center">
                 <label class="text-heading-color mr-3 text-lg" for="pincode">Pin Code :</label>
                 <input formControlName="pincode" name="pincode" id="pincode" class="w-1/2 outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="text">
+                <span class="text-red-400" *ngIf="!pincode?.valid && (pincode?.touched || pincode?.dirty)">
+                  <span *ngIf="!pincode?.valid && pincode?.errors?.['required']">pincode is required</span>
+                </span>
               </div>
            </div>
 
             <!-- Submit Button -->
           <div class="text-center">
-            <button type="submit" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all duration-300">Submit</button>
+            <button [disabled]="!contactForm.valid" type="submit" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all duration-300">Submit</button>
           </div>
         </form>
       </div>
