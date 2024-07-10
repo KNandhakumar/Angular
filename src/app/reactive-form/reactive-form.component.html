@@ -1,0 +1,91 @@
+<div class="p-3 text-center">
+    <h1 class="text-heading-color text-3xl font-medium">Reactive Form Concept</h1>
+</div>
+
+<!-- Reactive Form component -->
+<div class="flex flex-wrap justify-center mx-5">
+    <div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 my-3">
+      <h2 class="text-heading-color text-lg md:text-2xl my-2">Reactive Forms only input</h2>
+        <form action="" [formGroup]="contactForm" (submit)="onSubmit()">
+          <!-- First Name -->
+          <div class="mb-4">
+            <label class="block text-heading-color mb-1" for="firstname">First Name :</label>
+            <input formControlName="firstName" name="firstname" id="firstname" class="w-full outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="text">
+          </div>
+          
+          <!-- Last Name -->
+          <div class="mb-4">
+            <label class="block text-heading-color mb-1" for="lastname">Last Name :</label>
+            <input formControlName="lastName" name="lastname" id="lastname" class="w-full outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="text">
+          </div>
+      
+          <!-- Email -->
+          <div class="mb-4">
+            <label class="block text-heading-color mb-1" for="email">Email :</label>
+            <input formControlName="email" name="email" id="email" class="w-full outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="email">
+          </div>
+      
+          <!-- Gender -->
+          <div class="mb-4">
+            <div class="flex">
+                <label class="block mr-1 text-heading-color mb-1 text-lg">Gender :</label>
+            <div class="flex items-center">
+              <label class="mr-3 flex items-center">
+                <input type="radio" value="male" id="gender" formControlName="gender" name="gender" class="size-5 mr-1">
+                <span>Male</span>
+              </label>
+              <label class="mr-3 flex items-center">
+                <input type="radio" value="female" id="gender" formControlName="gender" name="gender" class="size-5 mr-1">
+                <span>Female</span>
+              </label>
+            </div>
+            </div>
+          </div>
+      
+          <!-- Married -->
+          <div class="mb-4 flex items-center">
+            <label class="text-heading-color mr-3 text-lg" for="isMarried">Married :</label>
+            <input type="checkbox" id="isMarried" formControlName="isMarried" name="isMarried" class="size-5 rounded border-emerald-700 text-emerald-600 focus:ring-emerald-500">
+          </div>
+      
+          <!-- Country -->
+          <div class="mb-4">
+           <div class="flex">
+            <label class="block text-heading-color mb-1 mr-2" for="country">Country :</label>
+            <select formControlName="country" name="country" id="country" class=" outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3">
+              <option value="">Select</option>
+              <option [ngValue]="country.id" *ngFor="let country of countryList">{{country.name}}</option>
+            </select>
+           </div> 
+          </div>
+
+          <!-- Add another formGroup ngModelGroup -->
+           <div formGroupName="address">
+            <!-- City -->
+            <div class="mb-4 flex items-center">
+            <label class="text-heading-color mr-3 text-lg" for="city">City :</label>
+            <input formControlName="city" name="city" id="city" class="w-1/2 outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="text">
+              </div>
+
+              <!-- Street -->
+              <div class="mb-4 flex items-center">
+              <label class="text-heading-color mr-3 text-lg" for="street">Street :</label>
+            <input formControlName="street" name="street" id="street" class="w-1/2 outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="text">
+              </div>
+
+              <!-- Pincode -->
+              <div class="mb-4 flex items-center">
+                <label class="text-heading-color mr-3 text-lg" for="pincode">Pin Code :</label>
+                <input formControlName="pincode" name="pincode" id="pincode" class="w-1/2 outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="text">
+              </div>
+           </div>
+
+            <!-- Submit Button -->
+          <div class="text-center">
+            <button type="submit" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all duration-300">Submit</button>
+          </div>
+        </form>
+      </div>
+</div>
+
+<app-reactive-form-1></app-reactive-form-1>
