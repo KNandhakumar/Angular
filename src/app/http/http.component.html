@@ -1,0 +1,34 @@
+<div class="p-3 text-center">
+    <h1 class="text-heading-color text-3xl font-medium">Http Concepts</h1>
+</div>
+
+<!-- Http Post Method -->
+<div class="flex flex-wrap justify-center mx-5">
+    <div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 my-3">
+      <h2 class="text-heading-color text-lg md:text-2xl my-2">Http Post Method</h2>
+      <form action="" [formGroup]="useForm" (submit)="onSubmit()">
+        <label class="block text-heading-color mb-1" for="name">Name :</label>
+        <input formControlName="Name" name="name" id="name" class="w-full outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="text" placeholder="enter name">
+       <span class="text-red-400" *ngIf="!inputName?.valid && (inputName?.touched || inputName?.dirty)">
+        <span *ngIf="!inputName?.valid && inputName?.errors?.['required']">name is required</span>
+       </span>
+        <label class="block text-heading-color mb-1" for="email">Email :</label>
+        <input formControlName="Email" name="email" id="email" class="w-full outline-none rounded border text-emerald-500 drop-shadow-sm focus:border-emerald-700 py-2 px-3" type="text" placeholder="enter email">
+        <button [disabled]="!useForm.valid" type="submit" class="bg-emerald-600 text-white px-4 py-2 rounded hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all duration-300 mt-2">Add Users</button>
+        <span class="text-red-400 ml-2" *ngIf="!inputEmail?.valid && (inputEmail?.touched || inputEmail?.dirty)">
+            <span *ngIf="!inputEmail?.valid && inputEmail?.errors?.['required']">email is required</span>
+           </span>
+      </form>
+    </div>
+</div>
+
+<!-- Http Get Method -->
+<div class="flex flex-wrap justify-center mx-5">
+    <div class="container bg-emerald-100 w-full md:w-[55%] md:mx-auto rounded-md drop-shadow-lg p-5 my-3">
+      <h2 class="text-heading-color text-lg md:text-2xl my-2">Http Get Method</h2>
+      <strong class="text-lg text-red-600">Get user list from fake placeholder api</strong>
+      <ul>
+        <li class="text-emerald-600" *ngFor="let user of users">Name : {{user.name}} | Email : {{user.email}}</li>
+    </ul>
+    </div>
+</div>
