@@ -21,7 +21,7 @@ Welcome to the Angular Tutorial Site! This project aims to help beginners learn 
 
 ## Live Project
 
-Explore the live [Angular Tutorial Site](https://nandhu-angular.web.app/) to start learning Angular today!
+Explore the live (https://nandhu-angular.web.app/) to start learning Angular today!
 
 ---
 
