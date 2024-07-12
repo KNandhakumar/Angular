@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ReactiveForm1Component } from "../reactive-form-1/reactive-form-1.component";
+import { ReactiveForm2Component } from "../reactive-form-2/reactive-form-2.component";
 @Component({
   selector: 'app-reactive-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ReactiveForm1Component],
+  imports: [CommonModule, ReactiveFormsModule, ReactiveForm1Component, ReactiveForm2Component],
   templateUrl: './reactive-form.component.html',
   styleUrl: './reactive-form.component.css'
 })
